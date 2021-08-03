@@ -1,9 +1,9 @@
 package com.example.pokedex.ui
 
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.luminance
 import com.example.pokedex.R
 import com.example.pokedex.data.model.PokemonModel
 import com.example.pokedex.data.remote.PokeApiService
@@ -15,6 +15,8 @@ import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
+    val textView: TextView = findViewById<TextView>(R.id.textView)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<List<PokemonModel>>, response: Response<List<PokemonModel>>) {
                 response.body()?.forEach {
-                     = textView.text.toString().plus(it.body)
+                   val textView = textView.text.toString().plus(it.name)
                 }
             }
         })

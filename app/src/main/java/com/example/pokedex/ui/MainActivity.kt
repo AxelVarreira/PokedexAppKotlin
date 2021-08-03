@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     fun getData() {
         val retrofitClient = NetworkUtils
-            .getRetrofitInstance(Constants.SERVICE_BASE_URL)
+            .getRetrofitInstance()
 
         val endpoint = retrofitClient.create(PokeApiService::class.java)
         val callback = endpoint.getAllPokemons()

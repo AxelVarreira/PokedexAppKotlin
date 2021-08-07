@@ -19,13 +19,8 @@ class PokeApiServiceInstance {
         }
     }
 
-    // var api: PokeApiService
-    //get() {
-    //    return retrofit.create(PokeApiService::class.java)
-    //}
-
-    private val retrofit: Retrofit
-
+    private var retrofit: Retrofit
+    get() = retrofit
     init {
         val gson = GsonBuilder()
             .setLenient()

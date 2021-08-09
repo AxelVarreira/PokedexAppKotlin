@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        <variable
-            name="pokemon"
-            type="com.example.pokedex.data.model.PokemonModel" />
-    </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -16,16 +11,15 @@
             android:layout_marginLeft="200dp"
             app:layout_constraintStart_toStartOf="@+id/pokemon_button"
             app:layout_constraintStart_toEndOf="@id/pokemon_button"
+            app:layout_constraintBaseline_toTopOf="parent"
             />
 
         <Button
             android:id="@+id/pokemon_button"
-            android:text="@{pokemon.name}"
             android:layout_width="140dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

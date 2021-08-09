@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.R
 import com.example.pokedex.data.repository.PokemonRepository
+import com.example.pokedex.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,18 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        /*
-        Nao esta pegando o ActivityMainBinding
-
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_main
-        )
-
-        binding.viewmodel = viewmodel
-        binding.lifecycleOwner = this
-         */
 
         val pokemonRepository = PokemonRepository()
 
@@ -46,5 +35,9 @@ class MainActivity : AppCompatActivity() {
         recyclerViewPokemons.adapter = adapterPokemon
 
         // Binding
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        binding.viewmodel = viewmodel
+        binding.lifecycleOwner = this
     }
 }

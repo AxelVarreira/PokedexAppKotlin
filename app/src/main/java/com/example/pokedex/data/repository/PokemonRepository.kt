@@ -5,12 +5,15 @@ import android.widget.Toast
 import com.example.pokedex.data.model.PokemonApiResponse
 import com.example.pokedex.data.model.PokemonModel
 import com.example.pokedex.data.remote.PokeApiService
+import com.example.pokedex.ui.PokemonViewModel
 import com.example.pokedex.utils.NetworkUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class PokemonRepository {
+
+    val viewModel  = PokemonViewModel()
 
     fun getAllPokemons(baseContext: Context) : ArrayList<PokemonModel> {
         val retrofitClient = NetworkUtils
@@ -33,6 +36,7 @@ class PokemonRepository {
             }
         })
 
+        viewModel.handleOnChange(pokemons)
         return pokemons
     }
 }

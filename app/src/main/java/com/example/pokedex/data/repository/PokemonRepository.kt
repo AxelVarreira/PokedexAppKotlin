@@ -1,15 +1,9 @@
 package com.example.pokedex.data.repository
 
-import android.app.Activity
 import android.content.Context
-import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import com.example.pokedex.R
 import com.example.pokedex.data.model.PokemonApiResponse
-import com.example.pokedex.data.model.PokemonDetailModel
+import com.example.pokedex.data.model.PokemonModel
 import com.example.pokedex.data.remote.PokeApiService
 import com.example.pokedex.utils.NetworkUtils
 import retrofit2.Call
@@ -18,9 +12,11 @@ import retrofit2.Response
 
 class PokemonRepository {
 
-    fun getAllPokemons(baseContext: Context, button: Button) {
+    fun getAllPokemons(baseContext: Context) : ArrayList<PokemonModel> {
         val retrofitClient = NetworkUtils
             .getRetrofitInstance()
+
+        val pokemons = ArrayList<PokemonModel>()
 
         val endpoint = retrofitClient.create(PokeApiService::class.java)
         val callback = endpoint.getAllPokemons()
@@ -32,13 +28,11 @@ class PokemonRepository {
 
             override fun onResponse(call: Call<PokemonApiResponse>, response: Response<PokemonApiResponse>) {
                 response.body()?.results?.forEach {
-                    button.text = button.text.toString().plus(it.name)
+                    pokemons.add(it)
                 }
             }
         })
-    }
 
-    fun getDetailedPokemon(nomePokemon: String): Response<PokemonDetailModel> {
-        TODO("Not yet implemented")
+        return pokemons
     }
 }
